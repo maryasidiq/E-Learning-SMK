@@ -71,7 +71,18 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/ulangan/siswa', 'NilaiController@siswa')->name('ulangan.siswa');
     Route::get('/sikap/siswa', 'SikapController@siswa')->name('sikap.siswa');
     Route::get('/rapot/siswa', 'RapotController@siswa')->name('rapot.siswa');
+
+    // Forum Diskusi Routes - Siswa
+    Route::get('/forum/siswa', 'ForumController@indexSiswa')->name('forum.siswa');
+    Route::get('/forum/siswa/{id}', 'ForumController@show')->name('forum.siswa.show');
   });
+
+  // Shared routes (accessible by both guru and siswa)
+  Route::post('/forum/{id}/comment', 'ForumController@comment')->name('forum.comment');
+
+  // AJAX routes for forum comments (real-time without refresh)
+  Route::post('/forum/{id}/comment/ajax', 'ForumController@commentAjax')->name('forum.comment.ajax');
+  Route::get('/forum/{id}/comments/ajax', 'ForumController@getCommentsAjax')->name('forum.comments.ajax');
 
   Route::middleware(['guru'])->group(function () {
     Route::get('/absen/harian', 'GuruController@absen')->name('absen.harian');
@@ -102,6 +113,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/soal/edit-soal/{soal_id}/{soal_detail_id}', 'SoalController@editSoal')->name('soal.edit-soal');
     Route::patch('/soal/update-soal/{soal_id}/{soal_detail_id}', 'SoalController@updateSoal')->name('soal.update-soal');
     Route::delete('/soal/destroy-soal/{soal_id}/{soal_detail_id}', 'SoalController@destroySoal')->name('soal.destroy-soal');
+
+    // Forum Diskusi Routes - Guru
+    Route::get('/forum/guru', 'ForumController@indexGuru')->name('forum.guru');
+    Route::get('/forum/guru/create', 'ForumController@create')->name('forum.guru.create');
+    Route::post('/forum/guru/store', 'ForumController@store')->name('forum.guru.store');
+    Route::get('/forum/guru/{id}', 'ForumController@show')->name('forum.guru.show');
+    Route::get('/forum/close/{id}', 'ForumController@close')->name('forum.close');
+    Route::get('/forum/reopen/{id}', 'ForumController@reopen')->name('forum.reopen');
+    Route::delete('/forum/destroy/{id}', 'ForumController@destroy')->name('forum.destroy');
+    Route::delete('/forum/comment/{id}', 'ForumController@deleteComment')->name('forum.comment.destroy');
   });
 
   Route::middleware(['admin'])->group(function () {

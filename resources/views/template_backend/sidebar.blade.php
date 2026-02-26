@@ -133,11 +133,11 @@
                     @else
                     @endif
                     <!-- <li class="nav-item">
-                                    <a href="{{ route('guru.absensi') }}" class="nav-link" id="AbsensiGuru">
-                                        <i class="fas fa-calendar-check nav-icon"></i>
-                                        <p>Absensi Guru</p>
-                                    </a>
-                                </li> -->
+                                            <a href="{{ route('guru.absensi') }}" class="nav-link" id="AbsensiGuru">
+                                                <i class="fas fa-calendar-check nav-icon"></i>
+                                                <p>Absensi Guru</p>
+                                            </a>
+                                        </li> -->
                     <li class="nav-item has-treeview" id="liNilai">
                         <a href="#" class="nav-link" id="Nilai">
                             <i class="nav-icon fas fa-file-signature"></i>
@@ -154,29 +154,29 @@
                                 </a>
                             </li>
                             <!-- <li class="nav-item">
-                                <a href="{{ route('ulangan-kelas') }}" class="nav-link" id="Ulangan">
-                                    <i class="fas fa-file-alt nav-icon"></i>
-                                    <p>Nilai Ulangan</p>
-                                </a>
-                            </li>
-                            {{-- <li class="nav-item">
-                                <a href="{{ route('sikap-kelas') }}" class="nav-link" id="Sikap">
-                                    <i class="fas fa-file-alt nav-icon"></i>
-                                    <p>Nilai Sikap</p>
-                                </a>
-                            </li> --}}
-                            <li class="nav-item">
-                                <a href="{{ route('rapot-kelas') }}" class="nav-link" id="Rapot">
-                                    <i class="fas fa-file-alt nav-icon"></i>
-                                    <p>Nilai Rapot</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('predikat') }}" class="nav-link" id="Deskripsi">
-                                    <i class="fas fa-file-alt nav-icon"></i>
-                                    <p>Deskripsi Predikat</p>
-                                </a>
-                            </li> -->
+                                        <a href="{{ route('ulangan-kelas') }}" class="nav-link" id="Ulangan">
+                                            <i class="fas fa-file-alt nav-icon"></i>
+                                            <p>Nilai Ulangan</p>
+                                        </a>
+                                    </li>
+                                    {{-- <li class="nav-item">
+                                        <a href="{{ route('sikap-kelas') }}" class="nav-link" id="Sikap">
+                                            <i class="fas fa-file-alt nav-icon"></i>
+                                            <p>Nilai Sikap</p>
+                                        </a>
+                                    </li> --}}
+                                    <li class="nav-item">
+                                        <a href="{{ route('rapot-kelas') }}" class="nav-link" id="Rapot">
+                                            <i class="fas fa-file-alt nav-icon"></i>
+                                            <p>Nilai Rapot</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('predikat') }}" class="nav-link" id="Deskripsi">
+                                            <i class="fas fa-file-alt nav-icon"></i>
+                                            <p>Deskripsi Predikat</p>
+                                        </a>
+                                    </li> -->
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -218,6 +218,12 @@
                             <p>Entry Nilai</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('forum.guru') }}" class="nav-link" id="ForumGuru">
+                            <i class="nav-icon fas fa-comments"></i>
+                            <p>Forum Diskusi</p>
+                        </a>
+                    </li>
                 @elseif (Auth::user()->role == 'Siswa' && Auth::user()->siswa(Auth::user()->no_induk))
                     <li class="nav-item has-treeview">
                         <a href="{{ url('/') }}" class="nav-link" id="Home">
@@ -247,6 +253,12 @@
                         <a href="{{ route('rapot.siswa') }}" class="nav-link" id="RapotSiswa">
                             <i class="fas fa-file-alt nav-icon"></i>
                             <p>Rapot</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('forum.siswa') }}" class="nav-link" id="ForumSiswa">
+                            <i class="fas fa-comments nav-icon"></i>
+                            <p>Forum Diskusi</p>
                         </a>
                     </li>
                 @else
