@@ -5,36 +5,48 @@
 @section('content')
     <div class="max-w-7xl mx-auto">
         <!-- Header Section -->
-        <div class="bg-gradient-to-br from-[#CB1C8D] to-[#F56EB3] dark:from-[#CB1C8D] dark:to-[#F56EB3] rounded-2xl p-8 mb-8 text-white shadow-2xl relative overflow-hidden">
-            <div class="absolute inset-0 bg-white/10"></div>
-            <div class="relative z-10 flex items-center justify-between">
+        <div class="relative rounded-3xl p-8 sm:p-10 mb-8 overflow-hidden bg-white dark:bg-gray-800 shadow-xl border border-gray-100 dark:border-gray-700">
+            <!-- Decorative blobs -->
+            <div class="absolute top-0 right-0 -mt-20 -mr-20 w-80 h-80 bg-gradient-to-br from-blue-400/30 to-indigo-600/30 blur-3xl rounded-full"></div>
+            <div class="absolute bottom-0 left-0 -mb-16 -ml-16 w-64 h-64 bg-gradient-to-tr from-green-400/20 to-emerald-500/15 blur-3xl rounded-full"></div>
+
+            <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
                 <div class="animate-fade-in">
-                    <h1 class="text-4xl font-extrabold mb-3 text-white dark:text-gray-100">Edit Nilai Siswa</h1>
-                    <p class="text-white/90 dark:text-gray-200 text-lg font-medium">Perbarui nilai akademik siswa secara massal</p>
-                    <div class="mt-4 flex items-center space-x-4">
-                        <div class="flex items-center bg-white/20 rounded-full px-4 py-2 backdrop-blur-sm">
-                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
-                            </svg>
-                            <span class="text-sm font-medium text-white dark:text-gray-100">Edit</span>
+                    <div class="inline-flex items-center space-x-2 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-300 px-3 py-1 rounded-full text-sm font-semibold mb-4 border border-emerald-100 dark:border-emerald-800">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span>Edit Massal</span>
+                    </div>
+                    <h1 class="text-3xl sm:text-4xl font-extrabold mb-2 text-gray-900 dark:text-white tracking-tight">Edit Nilai Siswa</h1>
+                    <p class="text-gray-500 dark:text-gray-400 text-base mb-5">Perbarui nilai akademik seluruh siswa secara massal</p>
+                    <div class="flex flex-wrap items-center gap-3">
+                        <div class="flex items-center bg-gray-50 dark:bg-gray-700/50 rounded-xl px-4 py-2.5 border border-gray-200 dark:border-gray-600 shadow-sm">
+                            <div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center mr-3 text-blue-600">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 font-medium">Jumlah Siswa</p>
+                                <p class="text-sm font-bold text-gray-900 dark:text-white">{{ $siswa->count() }} Siswa</p>
+                            </div>
                         </div>
-                        <div class="flex items-center bg-white/20 rounded-full px-4 py-2 backdrop-blur-sm">
-                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-                            </svg>
-                            <span class="text-sm font-medium text-white dark:text-gray-100">{{ $mapel->mapel->nama_mapel }}</span>
+                        <div class="flex items-center bg-gray-50 dark:bg-gray-700/50 rounded-xl px-4 py-2.5 border border-gray-200 dark:border-gray-600 shadow-sm">
+                            <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center mr-3 text-indigo-600">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 font-medium">Mata Pelajaran</p>
+                                <p class="text-sm font-bold text-gray-900 dark:text-white">{{ $mapel->mapel->nama_mapel }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="hidden md:block animate-bounce-slow">
-                    <div class="relative">
-                        <svg class="w-20 h-20 text-white/90 drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                        <div class="absolute -top-2 -right-2 w-6 h-6 bg-green-400 rounded-full flex items-center justify-center">
-                            <svg class="w-3 h-3 text-green-800" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                <div class="hidden md:flex justify-end items-center relative">
+                    <div class="relative w-28 h-28">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-emerald-500 to-green-500 rounded-3xl rotate-6 opacity-20 animate-pulse"></div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-emerald-400 to-green-500 rounded-3xl -rotate-6 opacity-40 shadow-xl"></div>
+                        <div class="absolute inset-0 flex items-center justify-center text-white drop-shadow-2xl">
+                            <svg class="w-14 h-14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
                         </div>
                     </div>
@@ -44,10 +56,10 @@
 
         {{-- Info Kelas --}}
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <div class="bg-white dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50 p-6 hover:shadow-xl hover:shadow-[#CB1C8D]/10 transition-all duration-300">
+            <div class="bg-white dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50 p-6 hover:shadow-xl hover:shadow-[#2563eb]/10 transition-all duration-300">
                 <div class="flex items-center">
-                    <div class="w-12 h-12 bg-[#F56EB3]/20 dark:bg-[#CB1C8D]/20 rounded-xl flex items-center justify-center mr-4">
-                        <svg class="w-6 h-6 text-[#CB1C8D]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="w-12 h-12 bg-[#4f46e5]/20 dark:bg-[#2563eb]/20 rounded-xl flex items-center justify-center mr-4">
+                        <svg class="w-6 h-6 text-[#2563eb]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
                         </svg>
                     </div>
@@ -58,10 +70,10 @@
                 </div>
             </div>
 
-            <div class="bg-white dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50 p-6 hover:shadow-xl hover:shadow-[#CB1C8D]/10 transition-all duration-300">
+            <div class="bg-white dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50 p-6 hover:shadow-xl hover:shadow-[#2563eb]/10 transition-all duration-300">
                 <div class="flex items-center">
-                    <div class="w-12 h-12 bg-[#CB1C8D]/20 dark:bg-[#F56EB3]/20 rounded-xl flex items-center justify-center mr-4">
-                        <svg class="w-6 h-6 text-[#CB1C8D]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="w-12 h-12 bg-[#2563eb]/20 dark:bg-[#4f46e5]/20 rounded-xl flex items-center justify-center mr-4">
+                        <svg class="w-6 h-6 text-[#2563eb]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                         </svg>
                     </div>
@@ -72,10 +84,10 @@
                 </div>
             </div>
 
-            <div class="bg-white dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50 p-6 hover:shadow-xl hover:shadow-[#CB1C8D]/10 transition-all duration-300">
+            <div class="bg-white dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50 p-6 hover:shadow-xl hover:shadow-[#2563eb]/10 transition-all duration-300">
                 <div class="flex items-center">
-                    <div class="w-12 h-12 bg-[#F56EB3]/20 dark:bg-[#CB1C8D]/20 rounded-xl flex items-center justify-center mr-4">
-                        <svg class="w-6 h-6 text-[#CB1C8D]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="w-12 h-12 bg-[#4f46e5]/20 dark:bg-[#2563eb]/20 rounded-xl flex items-center justify-center mr-4">
+                        <svg class="w-6 h-6 text-[#2563eb]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                         </svg>
                     </div>
@@ -86,10 +98,10 @@
                 </div>
             </div>
 
-            <div class="bg-white dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50 p-6 hover:shadow-xl hover:shadow-[#CB1C8D]/10 transition-all duration-300">
+            <div class="bg-white dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50 p-6 hover:shadow-xl hover:shadow-[#2563eb]/10 transition-all duration-300">
                 <div class="flex items-center">
-                    <div class="w-12 h-12 bg-[#CB1C8D]/20 dark:bg-[#F56EB3]/20 rounded-xl flex items-center justify-center mr-4">
-                        <svg class="w-6 h-6 text-[#CB1C8D]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="w-12 h-12 bg-[#2563eb]/20 dark:bg-[#4f46e5]/20 rounded-xl flex items-center justify-center mr-4">
+                        <svg class="w-6 h-6 text-[#2563eb]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a2 2 0 012-2h4a2 2 0 012 2v4m-6 4v10m0 0l-2-2m2 2l2-2m6-6v6m0 0l2-2m-2 2l-2-2"></path>
                         </svg>
                     </div>
@@ -107,26 +119,34 @@
 
         {{-- Existing Nilai Table --}}
         <div class="bg-white dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50 overflow-hidden shadow-xl mb-8">
-            <div class="bg-gradient-to-r from-[#CB1C8D] to-[#F56EB3] px-8 py-6">
-                <h2 class="text-2xl font-bold text-white">Edit Nilai Siswa</h2>
-                <p class="text-white/90 mt-1">Perbarui nilai siswa secara massal dengan mudah</p>
+            <div class="px-8 py-6 border-b border-gray-100 dark:border-gray-700 flex items-center">
+                <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center mr-4 text-emerald-600">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <div>
+                    <h2 class="text-xl font-bold text-gray-900 dark:text-white">Edit Nilai Siswa</h2>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm">Perbarui nilai siswa secara massal dengan mudah</p>
+                </div>
             </div>
 
             <div class="p-8">
                 @if($existingNilai && $existingNilai->count() > 0)
                     <div class="space-y-8">
                         @foreach($existingNilai as $judul => $nilaiList)
-                            <div class="bg-gray-50 dark:bg-gray-800/50 rounded-2xl border border-gray-200/50 dark:border-gray-700/50 overflow-hidden shadow-lg">
+                            <div class="bg-white dark:bg-gray-800/50 rounded-2xl border border-gray-200 dark:border-gray-700 overflow-hidden shadow-md">
                                 <!-- Nilai Header -->
-                                <div class="bg-gradient-to-r from-[#CB1C8D] to-[#F56EB3] text-white px-8 py-6">
-                                    <div class="flex items-center justify-between">
+                                <div class="px-6 py-4 border-b border-gray-100 dark:border-gray-700 flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <div class="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center mr-3 text-blue-600">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"></path></svg>
+                                        </div>
                                         <div>
-                                            <h3 class="text-2xl font-bold">{{ $judul }}</h3>
-                                            <p class="text-white/90 mt-1">Jumlah Siswa: {{ $nilaiList->count() }}</p>
+                                            <h3 class="text-lg font-bold text-gray-900 dark:text-white">{{ $judul }}</h3>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">Jumlah Siswa: {{ $nilaiList->count() }}</p>
                                         </div>
-                                        <div class="text-right">
-                                            <span class="text-sm text-white/80 bg-white/20 rounded-full px-3 py-1">Nilai #{{ $loop->iteration }}</span>
-                                        </div>
+                                    </div>
+                                    <div>
+                                        <span class="text-xs font-semibold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-800 rounded-full px-3 py-1">Nilai #{{ $loop->iteration }}</span>
                                     </div>
                                 </div>
 
@@ -138,15 +158,15 @@
                                         @endphp
                                         <div class="form-group">
                                             <label class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Nama Nilai</label>
-                                            <input type="text" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#CB1C8D] focus:border-[#CB1C8D] bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-200" value="{{ $judul }}">
+                                            <input type="text" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#2563eb] focus:border-[#2563eb] bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-200" value="{{ $judul }}">
                                         </div>
                                         <div class="form-group">
                                             <label class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Bobot Nilai</label>
-                                            <input type="number" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#CB1C8D] focus:border-[#CB1C8D] bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-200 bobot-input" value="{{ $firstNilai ? $firstNilai->bobot : 1 }}" min="1" required>
+                                            <input type="number" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#2563eb] focus:border-[#2563eb] bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-200 bobot-input" value="{{ $firstNilai ? $firstNilai->bobot : 1 }}" min="1" required>
                                         </div>
                                         <div class="form-group">
                                             <label class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Sumber Nilai</label>
-                                            <select class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#CB1C8D] focus:border-[#CB1C8D] bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-200 sumber-select" required>
+                                            <select class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#2563eb] focus:border-[#2563eb] bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-200 sumber-select" required>
                                                 <option value="manual" {{ $firstNilai && $firstNilai->sumber == 'manual' ? 'selected' : '' }}>Manual</option>
                                                 <option value="soal" {{ $firstNilai && $firstNilai->sumber == 'soal' ? 'selected' : '' }}>Dari Soal</option>
                                             </select>
@@ -162,7 +182,7 @@
                                                     @endphp
                                                     <div class="flex items-center space-x-4 bg-white dark:bg-gray-700 rounded-xl p-4 shadow-sm">
                                                         <label class="w-32 text-sm font-semibold text-gray-900 dark:text-white">{{ $s->nama_siswa }}</label>
-                                                        <input type="number" class="form-control flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#CB1C8D] focus:border-[#CB1C8D] bg-white dark:bg-gray-600 text-gray-900 dark:text-white transition-all duration-200 nilai-input" value="{{ $nilai ? $nilai->nilai : '' }}" min="0" max="100" placeholder="Nilai">
+                                                        <input type="number" class="form-control flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#2563eb] focus:border-[#2563eb] bg-white dark:bg-gray-600 text-gray-900 dark:text-white transition-all duration-200 nilai-input" value="{{ $nilai ? $nilai->nilai : '' }}" min="0" max="100" placeholder="Nilai">
                                                     </div>
                                                 @endforeach
                                             </div>
@@ -171,7 +191,7 @@
                                         <!-- Soal Input Section -->
                                         <div class="form-group md:col-span-2 lg:col-span-4 soal-input" style="display: {{ $firstNilai && $firstNilai->sumber == 'soal' ? 'block' : 'none' }};">
                                             <label class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Pilih Soal</label>
-                                            <select class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#CB1C8D] focus:border-[#CB1C8D] bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-200 soal-select">
+                                            <select class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#2563eb] focus:border-[#2563eb] bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-200 soal-select">
                                                 <option value="">Pilih Soal</option>
                                                 @foreach(\App\Soal::where('mapel_id', $mapel->mapel_id)->get() as $soal)
                                                     <option value="{{ $soal->id }}" {{ $firstNilai && $firstNilai->soal_id == $soal->id ? 'selected' : '' }}>{{ $soal->judul }}</option>
@@ -198,7 +218,7 @@
         {{-- Action Buttons --}}
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 mt-8">
             @if($existingNilai && $existingNilai->count() > 0)
-                <button id="update-semua-nilai" class="group bg-gradient-to-r from-[#CB1C8D] to-[#F56EB3] hover:from-[#b5187f] hover:to-[#e15fa5] border border-transparent rounded-xl font-bold text-sm text-white uppercase tracking-widest shadow-lg hover:shadow-xl focus:ring-4 focus:ring-pink-500/25 focus:ring-offset-2 transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-0.5 relative overflow-hidden">
+                <button id="update-semua-nilai" class="group bg-gradient-to-r from-[#2563eb] to-[#4f46e5] hover:from-[#1d4ed8] hover:to-[#4338ca] border border-transparent rounded-xl font-bold text-sm text-white uppercase tracking-widest shadow-lg hover:shadow-xl focus:ring-4 focus:ring-blue-500/25 focus:ring-offset-2 transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-0.5 relative overflow-hidden">
                     <div class="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
                     <span class="relative z-10 flex items-center justify-center px-6 py-4">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

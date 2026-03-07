@@ -4,37 +4,46 @@
 @section('content')
     <div class="max-w-6xl mx-auto">
         <!-- Header Section -->
-        <div class="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 rounded-xl p-6 mb-6 text-white">
-            <div class="flex items-center justify-between">
+        <!-- Header Section -->
+        <div class="relative rounded-3xl p-6 sm:p-8 mb-6 overflow-hidden bg-white dark:bg-gray-800 shadow-xl border border-gray-100 dark:border-gray-700">
+            <!-- Decorative Backgrounds -->
+            <div class="absolute top-0 right-0 -mt-20 -mr-20 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-indigo-600/20 blur-3xl rounded-full"></div>
+            <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-64 h-64 bg-gradient-to-tr from-cyan-400/20 to-blue-500/20 blur-3xl rounded-full"></div>
+            
+            <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
                 <div class="flex items-center">
-                    <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mr-4">
-                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
-                            </path>
+                    <div class="w-14 h-14 bg-blue-100 dark:bg-blue-900/50 text-blue-600 rounded-2xl flex items-center justify-center mr-5 shadow-sm border border-blue-200 dark:border-blue-800">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                         </svg>
                     </div>
                     <div>
-                        <h1 class="text-2xl font-bold">{{ $soal->judul }}</h1>
-                        <p class="text-emerald-100">Kerjakan Soal dengan baik</p>
+                        <h1 class="text-2xl sm:text-3xl font-extrabold text-gray-900 dark:text-white">{{ $soal->judul }}</h1>
+                        <p class="text-gray-600 dark:text-gray-400 font-medium">Kerjakan Soal dengan baik dan jujur</p>
                     </div>
                 </div>
-                <div class="text-right">
-                    <div class="text-sm text-emerald-100">Waktu Berakhir</div>
-                    <div class="text-2xl font-bold" id="countdown">00:00:00</div>
+
+                <div class="w-full md:w-auto text-center md:text-right bg-gray-50 dark:bg-gray-900/50 rounded-2xl p-4 border border-gray-200 dark:border-gray-700 shadow-inner">
+                    <div class="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-1">Sisa Waktu</div>
+                    <div class="text-3xl md:text-4xl font-black font-mono text-gray-900 dark:text-white tracking-tight" id="countdown">00:00:00</div>
                 </div>
             </div>
         </div>
 
         <!-- Progress Bar -->
-        <div class="bg-white dark:bg-white/[0.03] rounded-xl border border-gray-200 dark:border-gray-800 p-6 mb-6">
+        <!-- Progress Bar -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200/80 dark:border-gray-700/80 p-6 mb-8 shadow-sm">
             <div class="flex items-center justify-between mb-4">
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-300">Progress Soal</h3>
-                <span class="text-sm text-gray-500 dark:text-gray-400" id="progress-text">0 dari {{ count($soalDetail) }}
-                    soal</span>
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    Progress Pengerjaan
+                </h3>
+                <span class="text-sm font-semibold bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-3 py-1 rounded-full" id="progress-text">
+                    0 dari {{ count($soalDetail) }} soal
+                </span>
             </div>
-            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
-                <div class="bg-gradient-to-r from-emerald-500 to-teal-500 h-3 rounded-full transition-all duration-300"
+            <div class="w-full bg-gray-100 dark:bg-gray-700 rounded-full h-4 relative overflow-hidden">
+                <div class="absolute top-0 bottom-0 left-0 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full transition-all duration-500 ease-out shadow-[0_0_10px_rgba(59,130,246,0.5)]"
                     id="progress-bar" style="width: 0%"></div>
             </div>
         </div>
@@ -44,20 +53,22 @@
 
             @foreach($soalDetail as $index => $item)
                 <div
-                    class="mb-8 bg-white dark:bg-white/[0.03] rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden hover:shadow-lg transition-all duration-300">
+                    class="mb-8 bg-white dark:bg-gray-800 rounded-2xl border border-gray-200/80 dark:border-gray-700/80 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 relative group">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                    
                     <!-- Question Header -->
-                    <div class="bg-gradient-to-r from-blue-500 to-purple-600 p-4">
+                    <div class="bg-gray-50 dark:bg-gray-900/30 border-b border-gray-200 dark:border-gray-700 p-5">
                         <div class="flex justify-between items-center">
                             <div class="flex items-center">
-                                <div class="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center mr-3">
-                                    <span class="text-white font-bold">{{ $index + 1 }}</span>
+                                <div class="w-10 h-10 bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 rounded-xl flex items-center justify-center mr-4 shadow-sm font-black text-lg">
+                                    {{ $index + 1 }}
                                 </div>
-                                <h3 class="text-lg font-bold text-white">Soal {{ $index + 1 }}</h3>
+                                <h3 class="text-xl font-bold text-gray-900 dark:text-white">Soal {{ $index + 1 }}</h3>
                             </div>
                             <div class="flex items-center">
-                                <span
-                                    class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">{{ $item->bobot }}
-                                    poin</span>
+                                <span class="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-4 py-1.5 rounded-full text-sm font-bold shadow-inner">
+                                    {{ $item->bobot }} poin
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -201,19 +212,23 @@
             @endforeach
 
             <!-- Submit Button -->
-            <div class="bg-white dark:bg-white/[0.03] rounded-xl border border-gray-200 dark:border-gray-800 p-6">
-                <div class="text-center">
+            <!-- Submit Button -->
+            <div class="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-8 shadow-xl mt-12 relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-t from-blue-500/5 to-transparent"></div>
+                <div class="relative z-10 text-center max-w-2xl mx-auto">
+                    <div class="w-20 h-20 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
+                        <svg class="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Selesai Mengerjakan?</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-8">Pastikan Anda telah mengisi semua jawaban dengan benar sebelum mengirim. Waktu yang tersisa tidak dapat digunakan kembali setelah pengiriman.</p>
+                    
                     <button type="button" onclick="confirmSubmit()"
-                        class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-600 border border-transparent rounded-xl font-bold text-lg text-white uppercase tracking-widest hover:from-green-700 hover:to-emerald-700 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        class="inline-flex items-center justify-center w-full sm:w-auto px-10 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 border border-transparent rounded-xl font-bold text-lg text-white uppercase tracking-widest shadow-[0_10px_20px_rgba(79,70,229,0.3)] hover:shadow-[0_15px_30px_rgba(79,70,229,0.4)] focus:ring-4 focus:ring-blue-500/30 focus:outline-none transition-all duration-300 transform hover:-translate-y-1">
                         <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
                         </svg>
-                        Selesai & Kirim Jawaban
+                        Kirim Jawaban Sekarang
                     </button>
-                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-3">
-                        Pastikan semua jawaban sudah benar sebelum mengirim
-                    </p>
                 </div>
             </div>
         </form>

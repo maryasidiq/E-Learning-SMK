@@ -4,10 +4,10 @@
 @section('content')
     <div class="max-w-5xl mx-auto">
         <!-- Back Button -->
-        <div class="mb-6">
+        <div class="mb-6 flex justify-start">
             <a href="{{ route('forum.guru') }}"
-                class="inline-flex items-center text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-300 transition-colors">
-                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                class="group flex items-center gap-2 bg-white dark:bg-gray-800 hover:bg-blue-50 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-2 font-semibold text-sm shadow-sm transition-all duration-300">
+                <svg class="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                 </svg>
                 Kembali ke Forum
@@ -15,31 +15,45 @@
         </div>
 
         <!-- Topic Content -->
-        <div class="bg-white dark:bg-gray-800/50 rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-xl overflow-hidden mb-8">
-            <div class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 p-8 text-white">
-                <div class="flex items-center gap-3 mb-4">
-                    @if($topic->mapel)
-                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-white/20 text-white">
-                            {{ $topic->mapel->nama_mapel }}
+        <div class="bg-white dark:bg-gray-800/50 rounded-3xl border border-gray-100 dark:border-gray-700 shadow-xl overflow-hidden mb-8">
+            <div class="relative p-8 sm:p-10 overflow-hidden">
+                <!-- Decorative blobs -->
+                <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-gradient-to-br from-blue-400/20 to-indigo-600/20 blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-48 h-48 rounded-full bg-gradient-to-tr from-cyan-400/15 to-blue-500/15 blur-2xl"></div>
+
+                <div class="relative z-10">
+                    <div class="flex flex-wrap items-center gap-3 mb-6">
+                        @if($topic->mapel)
+                            <span class="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-bold bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border border-blue-100 dark:border-blue-800">
+                                <svg class="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                                {{ $topic->mapel->nama_mapel }}
+                            </span>
+                        @endif
+                        <span class="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-bold border {{ $topic->status == 'active' ? 'bg-green-50 border-green-200 text-green-700 dark:bg-green-900/30 dark:border-green-800 dark:text-green-300' : 'bg-gray-100 border-gray-200 text-gray-600 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300' }}">
+                            @if($topic->status == 'active')
+                                <span class="w-1.5 h-1.5 rounded-full bg-green-500 mr-2 animate-pulse"></span>
+                            @else
+                                <svg class="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                            @endif
+                            {{ $topic->status == 'active' ? 'Aktif' : 'Ditutup' }}
                         </span>
-                    @endif
-                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium {{ $topic->status == 'active' ? 'bg-green-500 text-white' : 'bg-gray-500 text-white' }}">
-                        {{ $topic->status == 'active' ? 'Aktif' : 'Ditutup' }}
-                    </span>
-                </div>
-                <h1 class="text-3xl font-bold mb-4">{{ $topic->title }}</h1>
-                <div class="flex items-center text-sm text-white/80">
-                    <div class="flex items-center mr-4">
-                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-                        </svg>
-                        {{ $topic->user->name ?? 'Unknown' }}
                     </div>
-                    <div class="flex items-center">
-                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                        </svg>
-                        {{ $topic->created_at->format('d M Y, H:i') }}
+                    
+                    <h1 class="text-3xl sm:text-4xl font-extrabold mb-5 tracking-tight text-gray-900 dark:text-white">{{ $topic->title }}</h1>
+                    
+                    <div class="flex flex-wrap items-center text-sm text-gray-500 dark:text-gray-400 font-medium gap-3">
+                        <div class="flex items-center bg-gray-50 dark:bg-gray-700/50 px-3 py-1.5 rounded-lg border border-gray-100 dark:border-gray-600">
+                            <svg class="w-4 h-4 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                            </svg>
+                            {{ $topic->user->name ?? 'Unknown' }}
+                        </div>
+                        <div class="flex items-center bg-gray-50 dark:bg-gray-700/50 px-3 py-1.5 rounded-lg border border-gray-100 dark:border-gray-600">
+                            <svg class="w-4 h-4 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                            {{ $topic->created_at->format('d M Y, H:i') }}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -51,19 +65,19 @@
 
                 <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700 flex flex-wrap gap-3">
                     @if($topic->status == 'active')
-                        <a href="{{ route('forum.close', $topic->id) }}" class="inline-flex items-center px-4 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-xl font-medium transition-colors" onclick="return confirm('Apakah Anda yakin ingin menutup topik ini?')">
+                        <a href="{{ route('forum.close', $topic->id) }}" class="inline-flex items-center px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200 rounded-xl font-bold text-sm transition-colors shadow-sm" onclick="return confirm('Apakah Anda yakin ingin menutup topik ini?')">
                             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path></svg>
                             Tutup Topik
                         </a>
                     @else
-                        <a href="{{ route('forum.reopen', $topic->id) }}" class="inline-flex items-center px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-xl font-medium transition-colors">
+                        <a href="{{ route('forum.reopen', $topic->id) }}" class="inline-flex items-center px-4 py-2 bg-green-50 hover:bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 rounded-xl font-bold text-sm transition-colors shadow-sm">
                             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
                             Buka Topik
                         </a>
                     @endif
                     <form action="{{ route('forum.destroy', $topic->id) }}" method="POST">
                         @csrf @method('DELETE')
-                        <button type="submit" class="inline-flex items-center px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-xl font-medium transition-colors" onclick="return confirm('Apakah Anda yakin ingin menghapus topik ini?')">
+                        <button type="submit" class="inline-flex items-center px-4 py-2 bg-red-50 hover:bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-400 rounded-xl font-bold text-sm transition-colors shadow-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus topik ini?')">
                             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
                             Hapus Topik
                         </button>
@@ -75,7 +89,7 @@
         <!-- Comments Section -->
         <div class="mb-8">
             <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
-                <svg class="w-6 h-6 mr-3 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                <svg class="w-6 h-6 mr-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
                 Komentar (<span id="comment-count">{{ $topic->allComments->count() }}</span>)
             </h2>
 
@@ -86,10 +100,10 @@
                         <input type="hidden" name="topic_id" value="{{ $topic->id }}">
                         <div class="mb-4">
                             <label for="comment" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Tulis Komentar</label>
-                            <textarea name="content" id="comment-content" rows="3" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white" placeholder="Tulis komentar Anda..."></textarea>
+                            <textarea name="content" id="comment-content" rows="3" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white" placeholder="Tulis komentar Anda..."></textarea>
                         </div>
                         <div class="flex justify-end">
-                            <button type="submit" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-bold text-sm uppercase">
+                            <button type="submit" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-xl font-bold text-sm uppercase shadow-md hover:shadow-lg transition-all duration-300">
                                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
                                 Kirim Komentar
                             </button>
@@ -113,7 +127,7 @@
                             @if($profilePhoto)
                                 <img src="{{ $profilePhoto }}" alt="{{ $comment->user->name }}" class="w-10 h-10 rounded-full mr-4 object-cover">
                             @else
-                                <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold mr-4">{{ $initial }}</div>
+                                <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-500 rounded-full flex items-center justify-center text-white font-bold mr-4">{{ $initial }}</div>
                             @endif
                             <div class="flex-1">
                                 <div class="flex items-center gap-2 mb-1">
@@ -123,16 +137,16 @@
                                 <p class="text-gray-700 dark:text-gray-300">{{ $comment->content }}</p>
 
                                 @if($topic->status == 'active')
-                                    <button onclick="toggleReplyForm({{ $comment->id }})" class="mt-2 text-sm text-indigo-600 hover:text-indigo-800">Balas</button>
+                                    <button onclick="toggleReplyForm({{ $comment->id }})" class="mt-2 text-sm text-blue-600 hover:text-blue-800">Balas</button>
                                 @endif
 
-                                <div id="reply-form-{{ $comment->id }}" class="hidden mt-4 pl-4 border-l-2 border-indigo-300">
+                                <div id="reply-form-{{ $comment->id }}" class="hidden mt-4 pl-4 border-l-2 border-blue-300">
                                     <form class="reply-form" data-parent-id="{{ $comment->id }}">
                                         @csrf
                                         <input type="hidden" name="parent_id" value="{{ $comment->id }}">
                                         <textarea name="content" rows="2" required class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm reply-content" placeholder="Tulis balasan..."></textarea>
                                         <div class="flex gap-2 mt-2">
-                                            <button type="submit" class="px-3 py-1 bg-indigo-600 hover:bg-indigo-700 text-white text-sm rounded-lg">Kirim</button>
+                                            <button type="submit" class="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white text-sm rounded-lg">Kirim</button>
                                             <button type="button" onclick="toggleReplyForm({{ $comment->id }})" class="px-3 py-1 bg-gray-300 text-gray-700 text-sm rounded-lg">Batal</button>
                                         </div>
                                     </form>
@@ -192,7 +206,7 @@
                 return `<img src="${user.profile_photo}" alt="${user.name}" class="w-10 h-10 rounded-full mr-4 object-cover">`;
             }
             const initial = user ? user.name.charAt(0) : 'U';
-            return `<div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold mr-4">${initial}</div>`;
+            return `<div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-500 rounded-full flex items-center justify-center text-white font-bold mr-4">${initial}</div>`;
         }
 
         function getReplyProfilePhotoHtml(user) {
@@ -269,15 +283,15 @@
                             });
                         }
 
-                        const replyButton = {{ $topic->status == 'active' }} ? `<button onclick="toggleReplyForm(${comment.id})" class="mt-2 text-sm text-indigo-600 hover:text-indigo-800">Balas</button>` : '';
+                        const replyButton = {{ $topic->status == 'active' }} ? `<button onclick="toggleReplyForm(${comment.id})" class="mt-2 text-sm text-blue-600 hover:text-blue-800">Balas</button>` : '';
                         const replyForm = {{ $topic->status == 'active' }} ? `
-                            <div id="reply-form-${comment.id}" class="hidden mt-4 pl-4 border-l-2 border-indigo-300">
+                            <div id="reply-form-${comment.id}" class="hidden mt-4 pl-4 border-l-2 border-blue-300">
                                 <form class="reply-form" data-parent-id="${comment.id}">
                                     @csrf
                                     <input type="hidden" name="parent_id" value="${comment.id}">
                                     <textarea name="content" rows="2" required class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm reply-content" placeholder="Tulis balasan..."></textarea>
                                     <div class="flex gap-2 mt-2">
-                                        <button type="submit" class="px-3 py-1 bg-indigo-600 text-white text-sm rounded-lg">Kirim</button>
+                                        <button type="submit" class="px-3 py-1 bg-blue-600 text-white text-sm rounded-lg">Kirim</button>
                                         <button type="button" onclick="toggleReplyForm(${comment.id})" class="px-3 py-1 bg-gray-300 text-gray-700 text-sm rounded-lg">Batal</button>
                                     </div>
                                 </form>

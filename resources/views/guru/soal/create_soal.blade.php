@@ -4,38 +4,49 @@
 @section('content')
     <div class="max-w-7xl mx-auto">
         <!-- Header Section -->
-        <div
-            class="bg-gradient-to-br from-blue-600 via-purple-700 to-indigo-800 dark:from-blue-800 dark:via-purple-900 dark:to-indigo-900 rounded-2xl p-8 mb-8 text-white shadow-2xl relative overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"></div>
-            <div class="relative z-10 flex items-center justify-between">
-                <div class="animate-fade-in">
-                    <h1
-                        class="text-4xl font-extrabold mb-3 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
-                        Tambah Soal</h1>
-                    <p class="text-blue-100 text-xl font-medium">Tambahkan soal baru untuk {{ $soal->judul }}</p>
-                    <div class="mt-4 flex items-center space-x-4">
-                        <div class="flex items-center bg-white/20 rounded-full px-4 py-2 backdrop-blur-sm">
-                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <span class="text-sm font-medium">Form Tambah Soal</span>
+        <div class="relative rounded-3xl p-8 sm:p-10 mb-8 overflow-hidden bg-white dark:bg-gray-800 shadow-xl border border-gray-100 dark:border-gray-700">
+            <!-- Decorative Backgrounds -->
+            <div class="absolute top-0 right-0 -mt-20 -mr-20 w-80 h-80 bg-gradient-to-br from-blue-400/30 to-indigo-600/30 blur-3xl rounded-full"></div>
+            <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-64 h-64 bg-gradient-to-tr from-cyan-400/20 to-blue-500/20 blur-3xl rounded-full"></div>
+            
+            <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="animate-fade-in w-full md:w-2/3">
+                    <div class="inline-flex items-center space-x-2 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 px-3 py-1 rounded-full text-sm font-semibold mb-4 border border-blue-100 dark:border-blue-800">
+                        <span class="relative flex h-2 w-2">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                        </span>
+                        <span>Tambah Item Soal</span>
+                    </div>
+                
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-2 text-gray-900 dark:text-white tracking-tight">Tambah Soal</h1>
+                    <p class="text-gray-600 dark:text-gray-300 text-lg mb-6 max-w-2xl">Tambahkan soal baru untuk {{ $soal->judul }}</p>
+
+                    <!-- Quick Info Pill -->
+                    <div class="flex flex-wrap items-center gap-3">
+                        <div class="flex items-center bg-gray-50 dark:bg-gray-700/50 rounded-xl px-4 py-2.5 border border-gray-200 dark:border-gray-600 shadow-sm transition-transform hover:-translate-y-1 duration-300">
+                            <div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center mr-3 text-blue-600">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 font-medium uppercase tracking-wider">Aksi</p>
+                                <p class="text-sm font-bold text-gray-900 dark:text-white">Form Tambah Soal</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="hidden md:block animate-bounce-slow">
-                    <div class="relative">
-                        <svg class="w-20 h-20 text-white/80 drop-shadow-lg" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
-                            </path>
-                        </svg>
-                        <div
-                            class="absolute -top-2 -right-2 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center">
-                            <svg class="w-3 h-3 text-yellow-800" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                </path>
+
+                <!-- Hero Illustration / Dynamic Element -->
+                <div class="hidden md:flex w-1/3 justify-end items-center relative animate-fade-in-up">
+                    <div class="relative w-32 h-32 lg:w-40 lg:h-40">
+                        <!-- Abstract Shape 1 -->
+                        <div class="absolute inset-0 bg-gradient-to-tr from-blue-500 to-indigo-500 rounded-3xl rotate-6 opacity-20 animate-pulse"></div>
+                        <!-- Abstract Shape 2 -->
+                        <div class="absolute inset-0 bg-gradient-to-tr from-cyan-400 to-blue-500 rounded-3xl -rotate-6 opacity-40 shadow-xl backdrop-blur-sm transition-transform hover:rotate-0 duration-500"></div>
+                        <!-- Inner Icon/Graphic -->
+                        <div class="absolute inset-0 flex items-center justify-center text-white drop-shadow-2xl">
+                            <svg class="w-16 h-16 lg:w-20 lg:h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"></path>
                             </svg>
                         </div>
                     </div>
@@ -85,8 +96,8 @@
 
                                 <!-- Tombol Buat Form Soal Manual -->
                                 <button type="button" onclick="generateSoalForm()" class="group w-full inline-flex items-center justify-center px-6 py-4
-                               bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600
-                               hover:from-blue-700 hover:via-purple-700 hover:to-indigo-700
+                               bg-gradient-to-r from-blue-600 via-blue-600 to-indigo-600
+                               hover:from-blue-700 hover:via-blue-700 hover:to-indigo-700
                                border border-transparent rounded-xl font-bold text-sm text-white uppercase tracking-widest
                                shadow-lg hover:shadow-xl
                                focus:ring-4 focus:ring-blue-500/25 focus:ring-offset-2
@@ -147,19 +158,19 @@
                         </div>
 
                         <!-- Footer Actions -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+                        <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between mt-8 space-y-3 sm:space-y-0 sm:space-x-3">
                             <!-- Tombol Simpan Semua Soal -->
                             <button type="submit"
-                                class="group bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 hover:from-blue-700 hover:via-purple-700 hover:to-indigo-700 border border-transparent rounded-xl font-bold text-sm text-white uppercase tracking-widest shadow-lg hover:shadow-xl focus:ring-4 focus:ring-blue-500/25 focus:ring-offset-2 transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-0.5 relative overflow-hidden">
+                                class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 border border-transparent rounded-xl font-bold text-sm text-white uppercase tracking-widest shadow-lg hover:shadow-xl focus:ring-4 focus:ring-blue-500/25 focus:ring-offset-2 transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-0.5 relative overflow-hidden">
 
                                 <!-- Shine -->
                                 <div class="absolute inset-0 bg-gradient-to-r 
                                     from-white/0 via-white/10 to-white/0
-                                    -translate-x-full group-hover:translate-x-full
+                                    -translate-x-full hover:translate-x-[100%]
                                     transition-transform duration-700"></div>
 
-                                <span class="relative z-10 flex items-center justify-center px-6 py-4">
-                                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <span class="relative z-10 flex items-center justify-center">
+                                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M5 13l4 4L19 7"></path>
                                     </svg>
@@ -167,7 +178,7 @@
                                 </span>
                             </button>
                             <!-- Tombol Kembali -->
-                            <a href="{{ route('soal.show', Crypt::encrypt($soal->id)) }}" class="group bg-gradient-to-r from-gray-600 to-gray-700 
+                            <a href="{{ route('soal.show', Crypt::encrypt($soal->id)) }}" class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-gray-600 to-gray-700 
                                hover:from-gray-700 hover:to-gray-800
                                border border-transparent rounded-xl font-bold text-sm text-white uppercase tracking-widest
                                shadow-lg hover:shadow-xl
@@ -178,11 +189,11 @@
                                 <!-- Shine -->
                                 <div class="absolute inset-0 bg-gradient-to-r 
                                     from-white/0 via-white/10 to-white/0
-                                    -translate-x-full group-hover:translate-x-full
+                                    -translate-x-full hover:translate-x-[100%]
                                     transition-transform duration-700"></div>
 
-                                <span class="relative z-10 flex items-center justify-center px-6 py-4">
-                                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <span class="relative z-10 flex items-center justify-center">
+                                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                                     </svg>

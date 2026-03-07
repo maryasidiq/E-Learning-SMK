@@ -116,6 +116,34 @@
                         </li>
                         <!-- Menu Item Materi Mapel -->
 
+                        <!-- Menu Item Soal -->
+                        <li>
+                            <a href="{{ route('soal.index') }}" class="menu-item group"
+                                :class="@json(Route::is('soal.index')) || @json(Route::is('soal.create')) ||
+                                                                                                                                                @json(Route::is('soal.show')) || @json(Route::is('soal.edit')) ||
+                                                                                                                                                @json(Route::is('soal.create-soal')) || @json(Route::is('soal.edit-soal')) ?
+                                                                                                                                                'menu-item-active' : 'menu-item-inactive'">
+                                <svg class="fill-none"
+                                    :class="@json(Route::is('soal.index')) || @json(Route::is('soal.create')) ||
+                                                                                                                                                    @json(Route::is('soal.show')) || @json(Route::is('soal.edit')) ||
+                                                                                                                                                    @json(Route::is('soal.create-soal')) || @json(Route::is('soal.edit-soal')) ?
+                                                                                                                                                    '!stroke-brand-400 !dark:stroke-brand-500' :
+                                                                                                                                                    'stroke-gray-500 dark:stroke-gray-400'"
+                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="lucide lucide-file-question-icon lucide-file-question">
+                                    <path d="M12 17h.01" />
+                                    <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z" />
+                                    <path d="M9.1 9a3 3 0 0 1 5.82 1c0 1-3 2-3 2" />
+                                </svg>
+
+                                <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
+                                    Soal
+                                </span>
+                            </a>
+                        </li>
+                        <!-- Menu Item Soal -->
+
                         <!-- Menu Item Nilai -->
                         <li>
                             <a href="{{ route('guru.nilai.mapel') }}" class="menu-item group"
@@ -232,6 +260,30 @@
                             </a>
                         </li>
                         <!-- Menu Item Materi -->
+
+                        <!-- Menu Item Soal -->
+                        <li>
+                            <a href="{{ route('soal.siswa') }}" class="menu-item group"
+                                :class="@json(Route::is('soal.siswa')) || @json(Route::is('soal.siswa.show')) || @json(Route::is('soal.siswa.kerjakan')) ? 'menu-item-active' :
+                                                                                                                                    'menu-item-inactive'">
+                                <svg class="fill-none"
+                                    :class="@json(Route::is('soal.siswa')) || @json(Route::is('soal.siswa.show')) || @json(Route::is('soal.siswa.kerjakan')) ?
+                                                                                                                                    'stroke-blue-500 dark:stroke-blue-400' :
+                                                                                                                                    'stroke-gray-500 dark:stroke-gray-400'"
+                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="lucide lucide-file-question-icon lucide-file-question">
+                                    <path d="M12 17h.01" />
+                                    <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z" />
+                                    <path d="M9.1 9a3 3 0 0 1 5.82 1c0 1-3 2-3 2" />
+                                </svg>
+
+                                <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
+                                    Soal
+                                </span>
+                            </a>
+                        </li>
+                        <!-- Menu Item Soal -->
 
                         <!-- Menu Item Nilai -->
                         <li>
