@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ asset('plugins/toastr/toastr.min.css') }}">
   <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
-  <link rel="shrotcut icon" href="{{ asset('img/logo2.png') }}">
+  <link rel="shrotcut icon" href="{{ asset('img/logo3.png') }}">
 </head>
 
 <body class="hold-transition login-page"

@@ -7,7 +7,7 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Sign In | {{ ENV('APP_NAME') }}</title>
-    <link rel="icon" type="image/png" href="{{ asset('img/logo2.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('img/logo3.png') }}">
     <link rel="stylesheet" href="{{ asset('plugins/toastr/toastr.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
@@ -90,14 +90,14 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                                         </div>
                                     </div>
                                     <!-- Checkbox -->
-                                    <div class="flex items-center justify-between">
+                                    <!-- <div class="flex items-center justify-between">
                                         @if (Route::has('password.request'))
                                             <a class="text-sm text-brand-500 hover:text-brand-600 dark:text-brand-400"
                                                 href="{{ route('password.request') }}">
                                                 {{ __('Lupa Password?') }}
                                             </a>
                                         @endif
-                                    </div>
+                                    </div> -->
                                     <!-- Button -->
                                     <div>
                                         <button type="submit"
@@ -107,14 +107,14 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                                     </div>
                                 </div>
                             </form>
-                            <div class="mt-5">
+                            <!-- <div class="mt-5">
                                 <p
                                     class="text-sm font-normal text-center text-gray-700 dark:text-gray-400 sm:text-start">
                                     Belum Memiliki Akun?
                                     <a href="{{ route('register') }}"
                                         class="text-brand-500 hover:text-brand-600 dark:text-brand-400">Buat Akun</a>
                                 </p>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -128,9 +128,9 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                     <div class="flex flex-col items-center max-w-xs">
                         <img src="{{ asset('img/logo1.png') }}" alt="Logo" />
                         <p class="text-center text-gray-400 dark:text-white/60">
-                            Copyright &copy; 2025 <a
-                                href="https://www.instagram.com/m_aryasidiq?igsh=MXhyajB3dXg0OGN0MA==" target="_blank"
-                                class="text-brand-500 hover:text-brand-600 dark:text-brand-400">m_aryasidiq</a>. All
+                            Copyright &copy; 2026 <a
+                                href="https://www.instagram.com/anggatasakti?igsh=MWp2M3hobnZ0bWJwZg==" target="_blank"
+                                class="text-brand-500 hover:text-brand-600 dark:text-brand-400">aggatasakti</a>. All
                             rights reserved.
                         </p>
                     </div>

@@ -1,6 +1,6 @@
 <footer class="main-footer">
         <marquee>
-            <strong>Copyright &copy; <script>document.write(new Date().getFullYear());</script> &diams; <a href="https://www.instagram.com/m_aryasidiq?igsh=MXhyajB3dXg0OGN0MA==" target="_blank">m_aryasidiq</a>. </strong>
+            <strong>Copyright &copy; <script>document.write(new Date().getFullYear());</script> &diams; <a href="https://www.instagram.com/anggatasakti?igsh=MWp2M3hobnZ0bWJwZg==" target="_blank">anggatasakti</a>. </strong>
         </marquee>
     </footer>
 
