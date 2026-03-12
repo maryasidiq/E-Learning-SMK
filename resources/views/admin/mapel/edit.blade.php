@@ -30,9 +30,9 @@
                 <select id="paket_id" name="paket_id"
                   class="form-control @error('paket_id') is-invalid @enderror select2bs4">
                   <option value="">-- Pilih Tingkat Kelas --</option>
-                  <option value="7" @if ($mapel->paket_id == '7') selected @endif>7</option>
-                  <option value="8" @if ($mapel->paket_id == '8') selected @endif>8</option>
-                  <option value="9" @if ($mapel->paket_id == '9') selected @endif>9</option>
+                  <option value="10" @if ($mapel->paket_id == '10') selected @endif>10</option>
+                  <option value="11" @if ($mapel->paket_id == '11') selected @endif>11</option>
+                  <option value="12" @if ($mapel->paket_id == '12') selected @endif>12</option>
                 </select>
               </div>
               <div class="form-group">
@@ -40,11 +40,14 @@
                 <select id="kelompok" name="kelompok"
                   class="select2bs4 form-control @error('kelompok') is-invalid @enderror">
                   <option value="">-- Pilih Kelas --</option>
-                  <option value="A" @if ($mapel->kelompok == 'A') selected @endif>Kelas A</option>
-                  <option value="B" @if ($mapel->kelompok == 'B') selected @endif>Kelas B</option>
-                  <option value="C" @if ($mapel->kelompok == 'C') selected @endif>Kelas C</option>
-                  <option value="D" @if ($mapel->kelompok == 'D') selected @endif>Kelas D</option>
-                  <option value="E" @if ($mapel->kelompok == 'E') selected @endif>Kelas E</option>
+                  <option value="Broadcasting & Perfilman" @if ($mapel->kelompok == 'Broadcasting & Perfilman') selected @endif>Broadcasting & Perfilman</option>
+                  <option value="Teknik Jaringan Komputer & Telekomunikasi" @if ($mapel->kelompok == 'Teknik Jaringan Komputer & Telekomunikasi') selected @endif>Teknik Jaringan Komputer & Telekomunikasi</option>
+                  <option value="Teknik Otomotif" @if ($mapel->kelompok == 'Teknik Otomotif') selected @endif>Teknik Otomotif</option>
+                  <option value="Teknik Mesin" @if ($mapel->kelompok == 'Teknik Mesin') selected @endif>Teknik Mesin</option>
+                  <option value="Desain Pemodelan" @if ($mapel->kelompok == 'Desain Pemodelan') selected @endif>Desain Pemodelan</option>
+                  <option value="Bisnis Konstruksi" @if ($mapel->kelompok == 'Bisnis Konstruksi') selected @endif>Bisnis Konstruksi</option>
+                  <option value="Teknik Elektronika" @if ($mapel->kelompok == 'Teknik Elektronika') selected @endif>Teknik Elektronika</option>
+                  <option value="Teknik Listrik" @if ($mapel->kelompok == 'Teknik Listrik') selected @endif>Teknik Listrik</option>
                 </select>
               </div>
             </div>

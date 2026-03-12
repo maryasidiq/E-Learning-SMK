@@ -23,13 +23,13 @@ class KelasController extends Controller
         $kelas = Kelas::OrderBy('nama_kelas', 'asc')->get();
         $guru = Guru::OrderBy('nama_guru', 'asc')->get();
         $paket = Paket::all();
-        $kelas_options = Mapel::selectRaw("CONCAT(paket_id, ' ', kelompok) as kelas, paket_id, kelompok")
+        $kelas_options = Mapel::selectRaw("CONCAT(paket_id, '|', kelompok) as kelas_value, kelompok as kelas_label, paket_id, kelompok")
             ->distinct()
             ->get()
             ->map(function ($item) {
                 return [
-                    'value' => $item->kelas,
-                    'label' => $item->kelas
+                    'value' => $item->kelas_value,
+                    'label' => $item->kelas_label
                 ];
             });
         return view('admin.kelas.index', compact('kelas', 'guru', 'paket', 'kelas_options'));
@@ -59,10 +59,10 @@ class KelasController extends Controller
             'guru_id' => 'required',
         ]);
 
-        // Parse nama_kelas to get paket and kelompok
-        $parts = explode(' ', $request->nama_kelas);
+        // Parse nama_kelas to get paket and kelompok (format: "paket_id|kelompok")
+        $parts = explode('|', $request->nama_kelas, 2);
         $paket_id = $parts[0];
-        $kelompok = $parts[1];
+        $kelompok = $parts[1] ?? null;
 
         // Find paket by id
         $paket = Paket::find($paket_id);
@@ -85,7 +85,7 @@ class KelasController extends Controller
                 'id' => $request->id
             ],
             [
-                'nama_kelas' => $request->nama_kelas,
+                'nama_kelas' => $kelompok,
                 'paket_id' => $paket->id,
                 'kelompok' => $kelompok,
                 'guru_id' => $request->guru_id,

@@ -703,7 +703,7 @@ Dashboard adalah halaman utama setelah login yang menampilkan informasi penting 
 #### Informasi Kelas:
 
 - Nama kelas (contoh: X IPA 1, XI IPS 2)
-- Tingkat kelas (7, 8, 9)
+- Tingkat kelas (10, 11, 12)
 - Wali kelas (guru yang bertugas)
 - Paket kurikulum (IPA, IPS, Bahasa)
 - Tahun ajaran

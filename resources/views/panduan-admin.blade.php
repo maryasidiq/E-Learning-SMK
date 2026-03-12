@@ -1,6 +1,6 @@
 @extends('template_backend.home')
 @section('pageTitle', 'Panduan Admin')
-@section('title', 'Panduan Pengguna Sistem Informasi Akademik SMP Negeri 2 Mlati - Admin')
+@section('title', 'Panduan Pengguna E-learning SMK Negeri 3 Yogyakarta - Admin')
 
 @section('content')
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -8,8 +8,8 @@
         <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 mb-8 text-grey shadow-2xl">
             <div class="text-center">
                 <h1 class="text-4xl font-bold mb-4">Panduan Admin</h1>
-                <p class="text-xl opacity-90">Sistem Informasi Akademik SMP Negeri 2 Mlati</p>
-                <p class="text-lg mt-2 opacity-80">ELSDUMI - E-Learning SMP Negeri 2 Mlati</p>
+                <p class="text-xl opacity-90">Sistem Informasi Akademik E-learning SMK Negeri 3 Yogyakarta</p>
+                <p class="text-lg mt-2 opacity-80">E-Learning SMK Negeri 3 Yogyakarta</p>
             </div>
         </div>
 

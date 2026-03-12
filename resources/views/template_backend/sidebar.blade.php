@@ -3,7 +3,7 @@
     <!-- Brand Logo -->
     <a href="" class="brand-link" style="">
         <img src="{{ asset('img/logo2.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3">
-        <span class="brand-text font-weight-light">ELSDUMI</span>
+        <span class="brand-text font-weight-light">E-Learning</span>
     </a>
 
     <!-- Sidebar -->

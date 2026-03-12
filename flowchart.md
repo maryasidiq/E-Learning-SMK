@@ -23,17 +23,25 @@ flowchart TB
     L --> M["Import/Export Data"]
     M --> N["Generate Laporan PDF/Excel"]
     N --> O["Trash Management"]
-    O --> P["End"]
+    O --> O1["Forum Diskusi"]
+    O1 --> O2["Kelola Topik & Komentar"]
+    O2 --> P["End"]
     I --> Q["Lihat Jadwal"]
     Q --> R["Materi Mapel"]
     R --> S["Soal"]
     S --> T["Entry Nilai"]
-    T --> P
+    T --> T1["Forum Diskusi"]
+    T1 --> T2["Buat Topik Mapel"]
+    T2 --> T3["Kelola Komentar"]
+    T3 --> P
     J --> V["Lihat Jadwal"]
     V --> W["Materi Mapel"]
     W --> X["Soal"]
     X --> Y["Lihat Nilai"]
-    Y --> P
+    Y --> Y1["Forum Diskusi"]
+    Y1 --> Y2["Lihat & Buat Topik"]
+    Y2 --> Y3["Komentar & Reply"]
+    Y3 --> P
     P --> AA{"Logout?"}
     AA -- Ya --> BB["Logout"]
     BB --> A

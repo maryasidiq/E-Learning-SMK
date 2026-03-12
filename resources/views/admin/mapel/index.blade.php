@@ -79,9 +79,9 @@
                   <select id="paket_id" name="paket_id"
                     class="form-control @error('paket_id') is-invalid @enderror select2bs4">
                     <option value="">-- Pilih Tingkat Kelas --</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
                   </select>
                 </div>
                 <div class="form-group">
@@ -89,11 +89,14 @@
                   <select id="kelompok" name="kelompok"
                     class="select2bs4 form-control @error('kelompok') is-invalid @enderror">
                     <option value="">-- Pilih Kelas --</option>
-                    <option value="A">Kelas A</option>
-                    <option value="B">Kelas B</option>
-                    <option value="C">Kelas C</option>
-                    <option value="D">Kelas D</option>
-                    <option value="E">Kelas E</option>
+                    <option value="Broadcasting & Perfilman">Broadcasting & Perfilman</option>
+                    <option value="Teknik Jaringan Komputer & Telekomunikasi">Teknik Jaringan Komputer & Telekomunikasi</option>
+                    <option value="Teknik Otomotif">Teknik Otomotif</option>
+                    <option value="Teknik Mesin">Teknik Mesin</option>
+                    <option value="Desain Pemodelan">Desain Pemodelan</option>
+                    <option value="Bisnis Konstruksi">Bisnis Konstruksi</option>
+                    <option value="Teknik Elektronika">Teknik Elektronika</option>
+                    <option value="Teknik Listrik">Teknik Listrik</option>
                   </select>
                 </div>
               </div>

@@ -196,6 +196,21 @@ erDiagram
         integer kehadiran_id
     }
 
+    FORUM_TOPIC {
+        string title
+        text content
+        integer mapel_id
+        integer user_id
+        string status
+    }
+
+    FORUM_COMMENT {
+        text content
+        integer topic_id
+        integer user_id
+        integer parent_id
+    }
+
     %% Relationships
 
     GURU ||--o{ JADWAL : "has many"
@@ -219,6 +234,7 @@ erDiagram
     MAPEL ||--o{ SIKAP : "has many"
     MAPEL ||--o{ ULANGAN : "has many"
     MAPEL ||--|| PAKET : "belongs to"
+    MAPEL ||--o{ FORUM_TOPIC : "has many"
 
     KELAS ||--o{ JADWAL : "has many"
     KELAS ||--o{ SISWA : "has many"
@@ -288,6 +304,16 @@ erDiagram
 
     ABSEN ||--|| GURU : "belongs to"
     ABSEN ||--|| KEHADIRAN : "belongs to"
+
+    %% Forum Discussion Relationships
+    USER ||--o{ FORUM_TOPIC : "creates"
+    USER ||--o{ FORUM_COMMENT : "writes"
+    FORUM_TOPIC ||--o{ FORUM_COMMENT : "has many"
+    FORUM_TOPIC ||--|| MAPEL : "belongs to"
+    FORUM_TOPIC ||--|| USER : "belongs to"
+    FORUM_COMMENT ||--|| FORUM_TOPIC : "belongs to"
+    FORUM_COMMENT ||--|| USER : "belongs to"
+    FORUM_COMMENT ||--o{ FORUM_COMMENT : "replies to"
 ```
 
 ## Penjelasan ERD
@@ -316,6 +342,8 @@ erDiagram
 - **HARI**: Hari dalam seminggu
 - **KEHADIRAN**: Status kehadiran
 - **ABSEN**: Absensi guru
+- **FORUM_TOPIC**: Topik diskusi forum
+- **FORUM_COMMENT**: Komentar/reply di forum diskusi
 
 ### Hubungan Utama:
 
@@ -325,5 +353,16 @@ erDiagram
 - Siswa termasuk dalam satu kelas dan memiliki banyak nilai
 - Soal terdiri dari banyak detail pertanyaan
 - Siswa menjawab soal dan mendapatkan nilai
+- **FORUM_TOPIC** dibuat oleh **USER** dan terkait dengan **MAPEL**
+- **FORUM_COMMENT** ditulis oleh **USER** dan belongs ke **FORUM_TOPIC**
+- **FORUM_COMMENT** dapat memiliki **parent_id** untuk sistem reply (nested comment)
+
+### Hubungan Forum Diskusi:
+
+- USER ||--o{ FORUM_TOPIC : "membuat topik"
+- USER ||--o{ FORUM_COMMENT : "menulis komentar"
+- FORUM_TOPIC ||--o{ FORUM_COMMENT : "memiliki banyak komentar"
+- FORUM_TOPIC ||--|| MAPEL : "berkaitan dengan mapel"
+- FORUM_COMMENT }o--o{ FORUM_COMMENT : "balasan/komentar berjenjang"
 
 Diagram ini dapat divisualisasikan menggunakan Mermaid di editor yang mendukungnya, seperti GitHub, VSCode dengan ekstensi Mermaid, atau online tools seperti mermaid.live.
